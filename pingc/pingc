@@ -1,0 +1,51 @@
+#!/bin/ksh
+#
+# Copyright (c) 2010, Joshua M. Clulow. All rights reserved.
+#   This file is distributable under the BSD license.
+#
+#
+# GIANT NOVELTY COLOURFUL PING (pingc)
+#
+#   Useful if you're on the other side of the datacentre
+#   and you want visual indication if the patch cable
+#   you just moved has come good again.
+#
+# NB: You'll need a SVR4-compatible 'banner' installed
+#       (apt-get install sysvbanner on Ubuntu/Debian
+#         or, save time and install Solaris as it has 
+#           one already!)
+#
+
+trap "printf '\\033[00m'; exit 0" INT KILL TERM
+
+UNAME=$(uname)
+function doping {
+	case "$UNAME" in
+		SunOS) /usr/sbin/ping $1 1 >/dev/null 2>&1 ;;
+		*BSD)  /sbin/ping -c 1 -w 1 $1 >/dev/null 2>&1 ;;
+		*)     ping -c 1 -w 1 -W 1 $1 >/dev/null 2>&1 ;;
+	esac
+}
+
+if	[[ $# -ne 1 ]]
+then	echo "Usage: $0 <HOSTNAME> "
+	printf '\033[00m'
+	exit 101
+fi
+
+banner $1
+
+while :
+do	if doping "$1"
+	then	printf '\033[01;32m'
+		banner "#OK#######"
+		sleep 1
+	else	printf '\033[01;31m'
+		banner "#FAIL#####"
+		sleep 1
+	fi
+done
+
+
+printf '\033[00m'
+

@@ -1,0 +1,14 @@
+=== MISCUTILS =================================================================
+
+ Miscellaneous scripts and utilities.
+
+ These files are licensed under the terms in the file BSD_LICENSE,
+  except where noted in individual files.
+
+--- Descriptions --------------------------------------------------------------
+
+  awesomebanner   -- curses moving banner app using svr4 banner font
+
+  pingc           -- giant novelty colourful ping, for visibility across
+                      the room/datacentre/etc
+

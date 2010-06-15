@@ -1,0 +1,18 @@
+=== AWESOMEBANNER ====================================================
+
+Like SVR4 'banner' but more awesome!  Initially written for Solaris
+but I cleaned it up to work on Linux as well.
+
+--- Build ------------------------------------------------------------
+
+  Solaris:
+    cc  -lcurses  -o awesomebanner awesomebanner.c
+
+  Linux:
+    gcc -lncurses -o awesomebanner awesomebanner.c
+
+--- Usage ------------------------------------------------------------
+
+  ./awesomebanner 'Some Message'
+
+----------------------------------------------------------------------
