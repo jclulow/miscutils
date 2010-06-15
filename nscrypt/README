@@ -1,0 +1,22 @@
+=== NSCRYPT ==========================================================
+
+ Solaris "encrypts" the LDAP bind password for the system LDAP client
+ in the file /var/ldap/ldap_client_cred.  This encryption is really
+ just obfuscation and is reversible without a key.  The function for
+ doing this is buried somewhere in the ldap client libraries...
+   ... this project contains an embedded copy of the routine and 
+        two standalone wrappers, all licensed under the CDDL.
+
+--- Build ------------------------------------------------------------
+
+  make
+
+--- Usage ------------------------------------------------------------
+
+  $ ./evalue 'some password'
+  {NS1}c5eb526bee8541a5a504c1c9e0
+
+  $ ./dvalue '{NS1}c5eb526bee8541a5a504c1c9e0'
+  some password
+
+----------------------------------------------------------------------
