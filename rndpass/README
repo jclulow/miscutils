@@ -1,0 +1,19 @@
+=== RNDPASS ===================================================================
+
+  Generate some number of randomised passwords of a selectable length.
+
+  Both C & Java versions use the same algorithm and the same CLI syntax.
+
+--- Usage ---------------------------------------------------------------------
+
+  $ ./rndpass 3 12
+  qxE3R5eOYid0
+  TbA1unxBxR%p
+  $zMgz76izFab
+
+  $ java RandomPasswords 3 12
+  xN7cYoCRqkbN
+  mh88GwJ%A2nl
+  aQuOjQkH2VKL
+
+-------------------------------------------------------------------------------
