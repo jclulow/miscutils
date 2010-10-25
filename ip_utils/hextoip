@@ -1,0 +1,23 @@
+#!/bin/ksh
+
+HEXADDR=$(echo $1 | tr '[a-z]' '[A-Z]')
+
+if [ ${#HEXADDR} -ne 8 ]; then
+        echo "ERROR: ${HEXADDR} isnt 8 digits long"
+        exit 1
+fi
+
+RESULT=""
+DOT=""
+IDX=1
+while [ ${IDX} -le ${#HEXADDR} ]; do
+        FIELD=$(echo ${HEXADDR} |
+	  cut -b${IDX}-$((${IDX}+1)) |
+	  tr '[a-z]' '[A-Z]')
+        RESULT="${RESULT}${DOT}`echo 16i ${FIELD} p | dc`"
+        DOT="."
+        IDX=$((${IDX} + 2))
+done
+
+echo ${RESULT}
+
